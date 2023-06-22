@@ -22,7 +22,6 @@ class CriaEmprestimo extends Migration
 
             $table->foreign('livro_id')->references('id')->on('livro');
             $table->foreign('aluno_id')->references('id')->on('aluno');
-            $table->primary(['livro_id', 'aluno_id']);
         });
     }
 

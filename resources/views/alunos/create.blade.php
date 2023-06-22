@@ -42,6 +42,14 @@
                     </a>
                 </div>
 
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger" role="alert">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
+
                 <form class="mt-3" method="POST">
                     @csrf
                     <div class="form-floating mb-3">

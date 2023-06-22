@@ -18,6 +18,12 @@ class AlunoController extends Controller
     public function store(Request $request) {
         //return $request->all();
 
+        $validated = $request->validate([
+            'nome'      => 'required|unique:aluno|max:100',
+            'matricula' => '',
+            'endereco'  => 'max:80'
+        ]);
+
         $obj            = new Aluno();
         $obj->nome      = $request->nome;
         $obj->matricula = $request->matricula;
