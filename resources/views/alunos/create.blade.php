@@ -44,8 +44,9 @@
 
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger alert-dismissible mt-3" role="alert">
                             {{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endforeach
                 @endif
@@ -53,17 +54,17 @@
                 <form class="mt-3" method="POST">
                     @csrf
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do aluno">
+                        <input type="text" class="form-control" name="nome" id="nome" value="{{ old('nome') }}" placeholder="Nome do aluno">
                         <label for="floatingInput">Nome do aluno</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Matrícula">
+                        <input type="text" class="form-control" name="matricula" id="matricula" value="{{ old('matricula') }}" placeholder="Matrícula">
                         <label for="floatingInput">Número de matrícula</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço">
+                        <input type="text" class="form-control" name="endereco" id="endereco" value="{{ old('endereco') }}" placeholder="Endereço">
                         <label for="floatingInput">Endereço</label>
                     </div>
 

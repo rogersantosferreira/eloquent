@@ -19,7 +19,7 @@ class AlunoController extends Controller
         //return $request->all();
 
         $validated = $request->validate([
-            'nome'      => 'required|unique:aluno|max:100',
+            'nome'      => 'required|max:100',
             'matricula' => '',
             'endereco'  => 'max:80'
         ]);
@@ -39,6 +39,12 @@ class AlunoController extends Controller
     }
 
     public function update(Request $request, $id) {
+
+        $validated = $request->validate([
+            'nome'      => 'required|max:100',
+            'matricula' => 'unique:aluno,matricula',
+            'endereco'  => 'max:80'
+        ]);
 
         $obj            = Aluno::findOrFail($id);
         $obj->nome      = $request->nome;

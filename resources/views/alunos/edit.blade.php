@@ -42,20 +42,29 @@
                     </a>
                 </div>
 
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible mt-3" role="alert">
+                            {{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endforeach
+                @endif
+
                 <form class="mt-3" action="{{ route('alunos.update', [$aluno->id]) }}" method="POST">
                     @csrf
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do aluno" value="{{ $aluno->nome }}">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome do aluno" value="{{ old('nome', $aluno->nome) }}">
                         <label for="floatingInput">Nome do aluno</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Matrícula" value="{{ $aluno->matricula }}">
+                        <input type="text" class="form-control" name="matricula" id="matricula" placeholder="Matrícula" value="{{ old('matricula', $aluno->matricula) }}">
                         <label for="floatingInput">Número de matrícula</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" value="{{ $aluno->endereco }}">
+                        <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" value="{{ old('endereco', $aluno->endereco) }}">
                         <label for="floatingInput">Endereço</label>
                     </div>
 

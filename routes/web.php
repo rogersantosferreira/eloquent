@@ -27,3 +27,7 @@ Route::post('/alunos/update/{id}',  [AlunoController::class, 'update'])->name('a
 Route::get('/alunos/delete/{id}',   [AlunoController::class, 'delete'])->name('alunos.delete');
 
 Route::get('/teste', [TesteController::class, 'teste'])->name('teste');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
